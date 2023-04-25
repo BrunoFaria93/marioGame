@@ -1,0 +1,153 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Press Start 2P', cursive;
+}
+.game-board {
+  width: 100%;
+  height: 100vh;
+  border-bottom: 10px solid green;
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+  /* background: linear-gradient(#87ceeb, #e0f6ff); */
+}
+
+.audio{
+    display: none;x
+}
+.clouds{
+    width: 200px;
+    position: absolute;
+    top: 15px;
+    animation: clouds-animation 5s infinite linear;
+    z-index: 1;
+}
+.clouds2{
+    width: 120px;
+    position: absolute;
+    top: 15px;
+    animation: clouds-animation2 7s infinite linear;
+}
+.pipe {
+  position: absolute;
+  width: 60px;
+  bottom: 0;
+  /* left: 70px; */
+  animation: pipe-animation 2s infinite linear;
+}
+.mario {
+  width: 80px;
+  z-index: 99;
+  position: absolute;
+  bottom: 0px;
+}
+.restartButton{
+    z-index: 999;
+    text-align: center;
+	display: inline-block;
+	margin:5px;
+    font-weight: bold;
+    padding: 30px 40px 30px 40px ;
+    background-color: lightgray;
+    text-shadow: -1px -1px black, 1px 1px white;
+    color: gray;
+    font-size: 20px;
+    -webkit-border-radius: 7px;
+	-moz-border-radius: 7px;
+	-o-border-radius: 7px;
+	border-radius: 7px;
+    box-shadow: 0 .2em gray; 
+    cursor: pointer;
+}
+.score{
+    color: yellow;
+    background-color: transparent;
+    z-index: 999;
+    text-shadow: 2px 0 #000, -2px 0 #000, 0 2px #000, 0 -2px #000,
+               1px 1px #000, -1px -1px #000, 1px -1px #000, -1px 1px #000;
+}
+
+.scorePainel{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: auto;
+    height: 70px;
+}
+.coin{
+    height: 35px;
+    z-index: 999;
+    width: 35px;
+}
+.restartButton:active {
+	box-shadow: none;
+	position: relative;
+}
+.replayButtonDiv{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+@keyframes clouds-animation {
+    from {
+      right: -80px;
+      opacity: 0.5;
+    }
+    to {
+      right: 100%;
+      opacity: 1;
+    }
+  }
+  @keyframes clouds-animation2 {
+    from {
+      right: -100px;
+      opacity: 0.5;
+    }
+    to {
+      right: 100%;
+      opacity: 1;
+    }
+  }
+@keyframes pipe-animation {
+  from {
+    right: -80px;
+  }
+  to {
+    right: 100%;
+  }
+}
+.jump {
+  animation: jump 500ms ease-out;
+}
+@keyframes jump {
+  0% {
+    bottom: 0;
+  }
+  40% {
+    bottom: 110px;
+  }
+  50% {
+    bottom: 110px;
+  }
+  60% {
+    bottom: 110px;
+  }
+  100% {
+    bottom: 0;
+  }
+}
+.gameover{
+    animation: gameover 1s linear;
+}
+@keyframes gameover {
+    from {
+        bottom: 0px;
+        opacity: 1;
+      }
+      to {
+        bottom: -50%;
+        opacity: 0;
+      }
+  }
