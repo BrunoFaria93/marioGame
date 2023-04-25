@@ -30,6 +30,52 @@ const jump = () => {
   }
 };
 
+const savedMuteState = localStorage.getItem("muteState");
+if (savedMuteState === "false") {
+  var sound = document.createElement("img");
+  sound.src = "./imagens/sound.png";
+  sound.style.position = "absolute";
+  sound.style.top = "15px";
+  sound.style.left = "15px";
+  sound.style.width = "50px";
+  sound.style.height = "50px";
+  sound.style.zIndex = "99999999";
+  gameBoard.appendChild(sound);
+
+  sound.addEventListener("click", () => {
+    backgroundSound.pause();
+    sound.src = "./imagens/nosound.png";
+    sound.style.height = "70px";
+    sound.style.width = "70px";
+    sound.style.top = "6px";
+    sound.style.left = "6px";
+    localStorage.setItem("muteState", true);
+  });
+} else {
+  backgroundSound.pause();
+  var sound = document.createElement("img");
+  sound.src = "./imagens/nosound.png";
+  sound.style.position = "absolute";
+  sound.style.height = "70px";
+  sound.style.width = "70px";
+  sound.style.top = "6px";
+  sound.style.left = "6px";
+  sound.style.zIndex = "99999999";
+
+  gameBoard.appendChild(sound);
+
+  sound.addEventListener("click", () => {
+    backgroundSound.play();
+    sound.src = "./imagens/sound.png";
+    sound.style.top = "15px";
+    sound.style.left = "15px";
+    sound.style.width = "50px";
+    sound.style.height = "50px";
+    sound.style.zIndex = "99999999";
+    localStorage.setItem("muteState", false);
+  });
+}
+
 let jumpButton = document.createElement("button");
 jumpButton.style.position = "absolute";
 jumpButton.style.right = "25px";
@@ -59,7 +105,10 @@ coinImage.classList.add("coin");
 scorePainel.appendChild(coinImage);
 
 const loop = setInterval(() => {
-  backgroundSound.play();
+  const savedMuteState = localStorage.getItem("muteState");
+  if (savedMuteState === "false") {
+    backgroundSound.play();
+  }
   const pipePosition = pipe.offsetLeft;
   const marioPosition = +window
     .getComputedStyle(mario)
@@ -71,15 +120,15 @@ const loop = setInterval(() => {
     scorePainel.appendChild(scoreDiv);
     flagScore++;
   }
-  if (5000 < score && score < 10000) {
+  if (500 < score && score < 1000) {
     isMorning = false;
     isAfternoon = true;
+    // gameBoard.classList.add("framerMotion")
     gameBoard.style.background = "linear-gradient(to bottom, #ec9713, #ddce22)";
     if (pipePosition < 0) {
-      pipe.style.animationDuration = "1.5s";
     }
   }
-  if (10000 < score) {
+  if (1000 < score) {
     // mario.src = "./imagens/mario-cape.gif";
     // mario.style.width = "70px";
     isAfternoon = true;
@@ -93,7 +142,7 @@ const loop = setInterval(() => {
     isMorning = false;
     isAfternoon = true;
     gameBoard.style.background = "linear-gradient(to bottom, #39107c, #9b6ad5)";
-    pipe.style.width = "80px";
+    pipe.style.width = "70px";
   }
   scoreDiv.innerHTML = `Score: ${score}`;
 
@@ -137,7 +186,7 @@ const loop = setInterval(() => {
       document.addEventListener("keydown", jump);
     }
   } else {
-    if (pipePosition <= 70 && pipePosition > 0 && marioPosition < 60) {
+    if (pipePosition <= 70 && pipePosition > 0 && marioPosition < 30) {
       alive = false;
       if (count === 0) {
         gameOver.play();

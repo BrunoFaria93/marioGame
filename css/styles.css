@@ -6,7 +6,7 @@
 }
 .game-board {
   width: 100%;
-  border-bottom: 10px solid green;
+  border-bottom: 40px solid green;
   margin: 0 auto;
   position: relative;
   overflow: hidden;
@@ -120,6 +120,20 @@
 .jump {
   animation: jump 500ms ease-out;
 }
+.framerMotion {
+    animation: framerMotion 5s;
+  }
+@keyframes framerMotion {
+    from {
+      opacity: 0;
+      transform: rotateX(-10deg);
+    }
+  
+    to {
+      opacity: 1;
+      transform: rotateX(0);
+    }
+  }
 @keyframes jump {
   0% {
     bottom: 0;
