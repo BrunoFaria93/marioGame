@@ -8,7 +8,7 @@ const timeout = document.querySelector("#timeout");
 // gameBoard.style.background = "linear-gradient(to bottom, " + "#ec9713" + ", " + "#e0f6ff" + ") !important";
 document.querySelector(".game-board").style.background =
   "linear-gradient(to bottom, #87ceeb, #e0f6ff)";
-
+document.querySelector(".game-board").style.height = `${window.innerHeight}px`;
 let count = 0;
 let flagScore = 0;
 let flagTime = 0;
@@ -17,17 +17,6 @@ let score = 0;
 let isMorning = true;
 let isAfternoon = false;
 let isNight = false;
-
-document.addEventListener("orientationchange", function (event) {
-  switch (window.orientation) {
-    case -90:
-    case 90:
-      /* Device is in landscape mode */
-      break;
-    default:
-    /* Device is in portrait mode */
-  }
-});
 
 const jump = () => {
   if (alive) {
@@ -40,6 +29,21 @@ const jump = () => {
     }, 500);
   }
 };
+
+let jumpButton = document.createElement("button");
+jumpButton.style.position = "absolute";
+jumpButton.style.right = "25px";
+jumpButton.classList.add("jumpButton");
+jumpButton.innerHTML = "Jump";
+jumpButton.style.top = "60vh";
+jumpButton.style.zIndex = "9999999999";
+jumpButton.style.background = "#db2450";
+// jumpButton.style.color = "#fcfcd3"
+jumpButton.style.padding = "25px 7px 25px 7px";
+jumpButton.style.borderRadius = "50%";
+jumpButton.classList.add("score");
+gameBoard.appendChild(jumpButton);
+jumpButton.addEventListener("click", jump);
 
 let scorePainel = document.createElement("div");
 scorePainel.style.position = "absolute";
@@ -67,7 +71,7 @@ const loop = setInterval(() => {
     scorePainel.appendChild(scoreDiv);
     flagScore++;
   }
-  if (500 < score && score < 1000) {
+  if (5000 < score && score < 10000) {
     isMorning = false;
     isAfternoon = true;
     gameBoard.style.background = "linear-gradient(to bottom, #ec9713, #ddce22)";
@@ -75,7 +79,7 @@ const loop = setInterval(() => {
       pipe.style.animationDuration = "1.5s";
     }
   }
-  if (1000 < score) {
+  if (10000 < score) {
     // mario.src = "./imagens/mario-cape.gif";
     // mario.style.width = "70px";
     isAfternoon = true;
@@ -107,7 +111,7 @@ const loop = setInterval(() => {
 
       mario.style.animation = "none";
       mario.style.bottom = `${marioPosition}px`;
-    // mario.classList.add(".gameover")
+      // mario.classList.add(".gameover")
       mario.src = "./imagens/mario-dies.gif";
       mario.style.width = "50px";
       mario.style.marginLeft = "50px";
@@ -134,10 +138,8 @@ const loop = setInterval(() => {
     }
   } else {
     if (pipePosition <= 70 && pipePosition > 0 && marioPosition < 60) {
-
       alive = false;
       if (count === 0) {
-
         gameOver.play();
         gameOver.volume = 0.5;
       }
@@ -149,7 +151,7 @@ const loop = setInterval(() => {
 
       mario.style.animation = "none";
       mario.style.bottom = `${marioPosition}px`;
-    // mario.classList.add(".gameover")
+      // mario.classList.add(".gameover")
 
       mario.src = "./imagens/mario-dies.gif";
       mario.style.width = "50px";
