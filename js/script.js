@@ -81,7 +81,11 @@ jumpButton.style.position = "absolute";
 jumpButton.style.right = "25px";
 jumpButton.classList.add("jumpButton");
 jumpButton.innerHTML = "Jump";
-jumpButton.style.top = "60vh";
+if(window.innerHeight > window.innerWidth){
+    jumpButton.style.top = "60vh";
+}else{
+    jumpButton.style.top = "40vh";
+}
 jumpButton.style.zIndex = "9999999999";
 jumpButton.style.background = "#db2450";
 // jumpButton.style.color = "#fcfcd3"
@@ -120,7 +124,7 @@ const loop = setInterval(() => {
     scorePainel.appendChild(scoreDiv);
     flagScore++;
   }
-  if (1000 < score && score < 5000) {
+  if (2000 < score && score < 5000) {
     isMorning = false;
     isAfternoon = true;
     // gameBoard.classList.add("framerMotion")
