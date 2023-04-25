@@ -148,6 +148,7 @@ const loop = setInterval(() => {
 
   if (!isNight) {
     if (pipePosition <= 70 && pipePosition > 0 && marioPosition < 20) {
+      backgroundSound.pause();
       alive = false;
       if (count === 0) {
         gameOver.play();
@@ -187,6 +188,7 @@ const loop = setInterval(() => {
     }
   } else {
     if (pipePosition <= 70 && pipePosition > 0 && marioPosition < 30) {
+      backgroundSound.pause();
       alive = false;
       if (count === 0) {
         gameOver.play();
