@@ -37,16 +37,16 @@ if (savedMuteState === "false") {
   sound.style.position = "absolute";
   sound.style.top = "15px";
   sound.style.left = "15px";
-  sound.style.width = "50px";
-  sound.style.height = "50px";
+  sound.style.width = "40px";
+  sound.style.height = "40px";
   sound.style.zIndex = "99999999";
   gameBoard.appendChild(sound);
 
   sound.addEventListener("click", () => {
     backgroundSound.pause();
     sound.src = "./imagens/nosound.png";
-    sound.style.height = "70px";
-    sound.style.width = "70px";
+    sound.style.height = "55px";
+    sound.style.width = "55px";
     sound.style.top = "6px";
     sound.style.left = "6px";
     localStorage.setItem("muteState", true);
@@ -56,8 +56,8 @@ if (savedMuteState === "false") {
   var sound = document.createElement("img");
   sound.src = "./imagens/nosound.png";
   sound.style.position = "absolute";
-  sound.style.height = "70px";
-  sound.style.width = "70px";
+  sound.style.height = "55px";
+  sound.style.width = "55px";
   sound.style.top = "6px";
   sound.style.left = "6px";
   sound.style.zIndex = "99999999";
@@ -69,8 +69,8 @@ if (savedMuteState === "false") {
     sound.src = "./imagens/sound.png";
     sound.style.top = "15px";
     sound.style.left = "15px";
-    sound.style.width = "50px";
-    sound.style.height = "50px";
+    sound.style.width = "40px";
+    sound.style.height = "40px";
     sound.style.zIndex = "99999999";
     localStorage.setItem("muteState", false);
   });
@@ -120,7 +120,7 @@ const loop = setInterval(() => {
     scorePainel.appendChild(scoreDiv);
     flagScore++;
   }
-  if (500 < score && score < 1000) {
+  if (1000 < score && score < 5000) {
     isMorning = false;
     isAfternoon = true;
     // gameBoard.classList.add("framerMotion")
@@ -128,7 +128,7 @@ const loop = setInterval(() => {
     if (pipePosition < 0) {
     }
   }
-  if (1000 < score) {
+  if (5000 < score) {
     // mario.src = "./imagens/mario-cape.gif";
     // mario.style.width = "70px";
     isAfternoon = true;
