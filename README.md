@@ -2,7 +2,7 @@
 
 Bem-vindo ao "Mario Jump" - um jogo simples e divertido do Mario criado em JavaScript!
 
-![Mario Jump Screenshot](screenshot.png)
+![image](https://github.com/BrunoFaria93/marioGame/assets/85502762/e9939e27-0270-4f03-86b0-420cb6d742cb)
 
 ## Visão Geral
 
